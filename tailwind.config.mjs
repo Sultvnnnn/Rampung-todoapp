@@ -7,6 +7,13 @@ export default {
     "./app/**/*.{js,jsx}",
     "./src/**/*.{js,jsx}",
   ],
+  safelist: [
+    {
+      pattern:
+        /(bg|text|border)-(indigo|blue|orange|emerald|pink|red|yellow)-(100|200|800|900)/,
+      variants: ["dark", "hover", "group-hover"],
+    },
+  ],
   theme: {
     container: {
       center: true,
