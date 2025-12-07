@@ -1,5 +1,6 @@
 "use client";
 
+import { Suspense } from "react";
 import { useState, useEffect } from "react";
 import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
@@ -57,7 +58,7 @@ const WORDS_LIST = [
   "Jadi...",
 ];
 
-export default function Home() {
+function TodoContent() {
   const { data: session, status } = useSession();
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = useState(false);
@@ -722,5 +723,19 @@ export default function Home() {
         </p>
       </footer>
     </div>
+  );
+}
+
+export default function Home() {
+  return (
+    <Suspense
+      fallback={
+        <div className="flex h-screen items-center justify-center">
+          Loading aplikasi...
+        </div>
+      }
+    >
+      <TodoContent />
+    </Suspense>
   );
 }
